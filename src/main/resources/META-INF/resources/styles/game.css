@@ -1,0 +1,21 @@
+.top-bar {
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--lumo-base-color);
+  border-bottom: 1px solid var(--lumo-contrast-10pct);
+}
+.stat-box {
+  padding: 0.25rem 0.5rem;
+  background: var(--lumo-contrast-10pct);
+  border-radius: 6px;
+}
+.map {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, var(--lumo-contrast-10pct), var(--lumo-contrast-5pct));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lumo-secondary-text-color);
+}
