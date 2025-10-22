@@ -22,17 +22,17 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 @Route(value = "game", layout = MainLayout.class)
-@CssImport(value = "styles/game.css")
+@CssImport(value = "./styles/game.css")
 public class GameView extends VerticalLayout implements BeforeEnterObserver {
     private GameState state;
     private AudioManager audioManager;
     private GameLoopService loop;
     private final SaveService saveService = new SaveService();
 
-    private Span dateLabel = new Span();
-    private Span populationLabel = new Span();
-    private Span economyLabel = new Span();
-    private Span reserveLabel = new Span();
+    private final Span dateLabel = new Span();
+    private final Span populationLabel = new Span();
+    private final Span economyLabel = new Span();
+    private final Span reserveLabel = new Span();
 
     private boolean musicEnabled = true;
 
@@ -74,10 +74,10 @@ public class GameView extends VerticalLayout implements BeforeEnterObserver {
         Button settings = new Button(new Icon(VaadinIcon.COG));
         settings.addClickListener(e -> openSettings());
 
-        Div dateBox = statBox("stat.date", dateLabel);
-        Div popBox = statBox("stat.population", populationLabel);
-        Div ecoBox = statBox("stat.economy", economyLabel);
-        Div resBox = statBox("stat.reserve", reserveLabel);
+        Div dateBox = statBox(VaadinIcon.CALENDAR, "stat.date", dateLabel);
+        Div popBox = statBox(VaadinIcon.GROUP, "stat.population", populationLabel);
+        Div ecoBox = statBox(VaadinIcon.MONEY, "stat.economy", economyLabel);
+        Div resBox = statBox(VaadinIcon.SHIELD, "stat.reserve", reserveLabel);
 
         topBar.add(speed1, speed2, speed3, dateBox, popBox, ecoBox, resBox, settings);
         topBar.expand(dateBox);
@@ -91,11 +91,13 @@ public class GameView extends VerticalLayout implements BeforeEnterObserver {
         setFlexGrow(1, map);
     }
 
-    private Div statBox(String i18nKey, Span value) {
+    private Div statBox(VaadinIcon iconType, String i18nKey, Span value) {
         Div box = new Div();
         box.addClassName("stat-box");
+        Icon icon = new Icon(iconType);
+        icon.addClassName("stat-icon");
         Span label = new Span(getTranslation(i18nKey) + ": ");
-        box.add(label, value);
+        box.add(icon, label, value);
         return box;
     }
 

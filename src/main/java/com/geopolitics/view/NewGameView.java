@@ -12,7 +12,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
 @Route(value = "new", layout = MainLayout.class)
-@CssImport(value = "styles/newgame.css")
+@CssImport(value = "./styles/newgame.css")
 public class NewGameView extends VerticalLayout {
 
     public NewGameView() {

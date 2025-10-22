@@ -5,15 +5,17 @@ import com.geopolitics.service.SaveService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinService;
+import com.vaadin.flow.server.PWA;
 
 @Route(value = "", layout = MainLayout.class)
-@CssImport(value = "styles/menu.css")
+@CssImport(value = "./styles/menu.css")
 public class MenuView extends VerticalLayout {
     private final SaveService saveService = new SaveService();
 
@@ -42,7 +44,10 @@ public class MenuView extends VerticalLayout {
             getUI().ifPresent(ui -> ui.getPage().executeJs("window.location.href='about:blank';"));
         });
 
-        add(title, newGame, cont, settings, profile, exit);
+        Span rotateHint = new Span(getTranslation("menu.rotate"));
+        rotateHint.getStyle().set("opacity", "0.7");
+
+        add(title, newGame, cont, settings, profile, exit, rotateHint);
         setSpacing(true);
     }
 }

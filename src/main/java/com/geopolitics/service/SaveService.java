@@ -38,6 +38,8 @@ public class SaveService {
     public static record SaveData(String id, Country country, LocalDate inGameDate, long population,
                                   double economyBillions, long reserve, Instant savedAt, String type) {}
 
+    public static record SaveListEntry(Path path, SaveData data) {}
+
     public SaveData save(GameState state, boolean autosave) {
         String type = autosave ? "autosave" : "manual";
         String id = autosave ? ("autosave-" + state.getCountry().name()) : UUID.randomUUID().toString();

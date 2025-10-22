@@ -19,8 +19,19 @@ public class SettingsDialog extends Dialog {
         setResizable(false);
 
         ComboBox<Locale> languages = new ComboBox<>(getTranslation("settings.language"));
-        languages.setItems(new Locale("ru"), Locale.ENGLISH);
-        languages.setItemLabelGenerator(loc -> loc.getDisplayLanguage(loc));
+        Locale ru = new Locale("ru");
+        Locale en = Locale.ENGLISH;
+        languages.setItems(ru, en);
+        languages.setValue(ui.getLocale());
+        languages.setItemLabelGenerator(loc -> {
+            String label = loc.getDisplayLanguage(loc);
+            String flag = loc.getLanguage().equals("ru") ? "🇷🇺" : "🇬🇧";
+            // Ensure native name capitalization
+            return switch (loc.getLanguage()) {
+                case "ru" -> "Русский " + flag;
+                default -> "English " + flag;
+            };
+        });
         languages.addValueChangeListener(ev -> {
             if (ev.getValue() != null) {
                 ui.setLocale(ev.getValue());

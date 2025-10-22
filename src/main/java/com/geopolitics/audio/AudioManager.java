@@ -8,7 +8,7 @@ import com.vaadin.flow.server.StreamResource;
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
 
-@JsModule("/src/audio-player.js")
+@JsModule("./src/audio-player.js")
 public class AudioManager {
     private final UI ui;
 

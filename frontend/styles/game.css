@@ -9,6 +9,9 @@
   padding: 0.25rem 0.5rem;
   background: var(--lumo-contrast-10pct);
   border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 .map {
   width: 100%;
