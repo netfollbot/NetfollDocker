@@ -1,0 +1,15 @@
+.country-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  background: var(--lumo-contrast-10pct);
+  cursor: pointer;
+  gap: 0.25rem;
+}
+.country-cell:hover { background: var(--lumo-contrast-20pct); }
+.flag { font-size: 40px; }
+.name { font-weight: 600; }
